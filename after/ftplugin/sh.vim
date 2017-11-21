@@ -40,6 +40,5 @@ let b:undo_ftplugin =         get(b:, 'undo_ftplugin', '')
                     \|  exe 'nunmap <buffer> <bar>c'
                     \|  exe 'nunmap <buffer> <bar>C'
                     \|  exe 'au!  my_sh * <buffer>'
-                    \|  exe 'aug! my_sh'
                     \|  delcommand CleanZshHistory
                     \  "
