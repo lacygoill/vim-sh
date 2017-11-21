@@ -1,9 +1,3 @@
-" NO GUARD
-" otherwise our ftplugin would never be sourced, because a previous
-" ftplugin already set the variable `b:did_ftplugin` (hit `gF`):
-"
-"         $VIMRUNTIME/ftplugin/sh.vim:8
-
 " Commands {{{1
 
 com! -buffer CleanZshHistory call sh#clean_zsh_history()
