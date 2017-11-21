@@ -4,6 +4,16 @@
 "
 "         $VIMRUNTIME/ftplugin/sh.vim:8
 
+" Commands {{{1
+
+com! -buffer CleanZshHistory call sh#clean_zsh_history()
+
+" Mappings {{{1
+
+nno <buffer> <nowait> <silent>  K       :<c-u>call sh#man_k('bash')<cr>
+nno <buffer> <nowait> <silent>  <bar>c  :<c-u>call sh#shellcheck_loclist()<cr>
+nno <buffer> <nowait> <silent>  <bar>C  :<c-u>call sh#shellcheck_raw_output()<cr>
+
 " Options {{{1
 
 augroup my_sh
@@ -20,12 +30,6 @@ setl sw=2
 setl ts=2
 setl tw=80
 
-" Mappings {{{1
-
-nno <buffer> <nowait> <silent>  K       :<c-u>call sh#man_k('bash')<cr>
-nno <buffer> <nowait> <silent>  <bar>c  :<c-u>call sh#shellcheck_loclist()<cr>
-nno <buffer> <nowait> <silent>  <bar>C  :<c-u>call sh#shellcheck_raw_output()<cr>
-
 " Teardown {{{1
 
 let b:undo_ftplugin =         get(b:, 'undo_ftplugin', '')
@@ -37,4 +41,5 @@ let b:undo_ftplugin =         get(b:, 'undo_ftplugin', '')
                     \|  exe 'nunmap <buffer> <bar>C'
                     \|  exe 'au!  my_sh * <buffer>'
                     \|  exe 'aug! my_sh'
+                    \|  delcommand CleanZshHistory
                     \  "
