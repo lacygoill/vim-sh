@@ -12,44 +12,6 @@ fu! sh#fold_text() abort "{{{1
     endif
 endfu
 
-fu! sh#man_k(pgm) abort "{{{1
-    let cur_word = expand('<cword>')
-    let g:cur_word = deepcopy(cur_word)
-    exe 'Man '.a:pgm
-
-    try
-        " populate location list
-        exe 'lvim /\<\C'.cur_word.'\>/ %'
-        " set its title
-        call setloclist(0, [], 'a', { 'title': cur_word })
-
-        " Hit `[L` and then `[l`, so that we can move across the matches with
-        " `;` and `,`.
-        sil! norm [L
-        sil! norm [l
-    catch
-        try
-            sil exe 'Man '.cur_word
-        catch
-            " If the word under the cursor is not present in any man page, quit.
-            quit
-            " FIXME:
-            " If I hit `K` on a garbage word inside a shell script, the function
-            " doesn't quit, because `:Man garbage_word` isn't considered an error.
-            " If it was considered an error `:silent` wouldn't be enough to
-            " hide the warning message. We would have to add a bang.
-            " The problem comes from `man#open_page()` inside
-            " ~/.vim/plugged/vim-man/autoload/man.vim
-            "
-            " When it receives an optional word as an argument, and there's no
-            " manual page for it, the function calls `s:error()`. The latter
-            " don't raise any exception. Maybe we could use `:throw`, although
-            " I don't know how it works exactly. But then we would have errors
-            " when we execute `:Man garbage_word` manually.
-        endtry
-    endtry
-endfu
-
 fu! sh#shellcheck_loclist() abort "{{{1
 " FIXME:
 " consider this line:
