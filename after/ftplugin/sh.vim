@@ -2,6 +2,10 @@
 
 com! -buffer CleanZshHistory call sh#clean_zsh_history()
 
+cnorea <expr> <buffer> cleanzshhistory getcmdtype() ==# ':' && getcmdline() ==# 'cleanzshhistory'
+\                                      ?    'CleanZshHistory'
+\                                      :    'cleanzshhistory'
+
 " Mappings {{{1
 
 nno <buffer> <nowait> <silent>  K       :<c-u>call my_lib#man_k('bash')<cr>
@@ -33,6 +37,7 @@ let b:undo_ftplugin =         get(b:, 'undo_ftplugin', '')
                     \|  exe 'nunmap <buffer> K'
                     \|  exe 'nunmap <buffer> <bar>c'
                     \|  exe 'nunmap <buffer> <bar>C'
+                    \|  exe 'cuna   <buffer> cleanzshhistory'
                     \|  exe 'au!  my_sh * <buffer>'
                     \|  delcommand CleanZshHistory
                     \  "
