@@ -34,10 +34,10 @@ let b:undo_ftplugin =         get(b:, 'undo_ftplugin', '')
                     \ .(empty(get(b:, 'undo_ftplugin', '')) ? '' : '|')
                     \ ."
                     \   setl cocu< cole< fdm< fdt< kp< sts< sw< ts< tw<
+                    \|  exe 'au!  my_sh * <buffer>'
                     \|  exe 'nunmap <buffer> K'
                     \|  exe 'nunmap <buffer> <bar>c'
                     \|  exe 'nunmap <buffer> <bar>C'
                     \|  exe 'cuna   <buffer> cleanzshhistory'
-                    \|  exe 'au!  my_sh * <buffer>'
                     \|  delcommand CleanZshHistory
                     \  "
