@@ -2,9 +2,9 @@
 
 com! -buffer CleanZshHistory call sh#clean_zsh_history()
 
-cnorea <expr> <buffer> cleanzshhistory getcmdtype() ==# ':' && getcmdline() ==# 'cleanzshhistory'
-\                                      ?    'CleanZshHistory'
-\                                      :    'cleanzshhistory'
+cnorea <expr> <buffer> cleanzshhistory  getcmdtype() ==# ':' && getcmdline() ==# 'cleanzshhistory'
+\                                       ?    'CleanZshHistory'
+\                                       :    'cleanzshhistory'
 
 " Mappings {{{1
 
