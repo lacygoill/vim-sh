@@ -108,7 +108,7 @@ fu! sh#shellcheck_raw_output() abort "{{{1
 
     sil 0put =output
 
-    nno <buffer> <nowait> <silent> q    :<c-u>close<cr>
+    nno  <buffer><nowait><silent>  q  :<c-u>close<cr>
 
     $-,$d_ | 1d_
     setl noma ro
