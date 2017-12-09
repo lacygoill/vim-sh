@@ -86,9 +86,8 @@ fu! sh#shellcheck_loclist() abort "{{{1
         return
     endif
 
-    setl cocu=nc cole=3
-    let pat = '\v^.{-}SC\d{-1,}:'
-    call matchadd('Conceal', pat, 0, -1, {'conceal': 'x'})
+    call qf#set_matches('sh:shellcheck_loclist', 'Conceal', '\v^.{-}SC\d{-1,}:')
+    call qf#create_matches()
 
     " get out of quickfix window, back to our shell buffer
     wincmd p
