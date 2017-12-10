@@ -1,8 +1,3 @@
-if exists('g:autoloaded_sh')
-    finish
-endif
-let g:autoloaded_sh = 1
-
 fu! sh#clean_zsh_history() abort "{{{1
     " TODO: handle the case where we delete the first line of a multi-line command;
     " we need to remove the others too.
