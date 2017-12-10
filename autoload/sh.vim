@@ -69,13 +69,9 @@ fu! sh#shellcheck_loclist() abort "{{{1
         echo 'No errors'
         lclose
         return
-    else
-        " position the cursor on first error
-        sil! norm [L
-        " make next motions with `;` and `,` repeat `]l` and `]l`,
-        " instead of `]L` and `[L`
-        sil! norm [l
     endif
+
+    let g:motion_to_repeat = ']l'
 
     call setloclist(0, loclist)
     call setloclist(0, [], 'a', { 'title': 'Errors' })
