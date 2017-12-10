@@ -77,10 +77,9 @@ fu! sh#shellcheck_loclist() abort "{{{1
         sil! norm [l
     endif
 
-    call map(loclist, { i,v -> extend(v, {'valid': 1}) })
     call setloclist(0, loclist)
     call setloclist(0, [], 'a', { 'title': 'Errors' })
-    doautocmd <nomodeline> QuickFixCmdPost lgrep
+    doautocmd <nomodeline> QuickFixCmdPost lopen
 
     if &l:buftype !=# 'quickfix'
         return
