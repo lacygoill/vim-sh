@@ -17,7 +17,7 @@ nno  <buffer><nowait><silent>  <bar>C  :<c-u>call sh#shellcheck_raw_output()<cr>
 augroup my_sh
     au! *            <buffer>
     au  BufWinEnter  <buffer>  setl fdm=marker
-                           \ | let &l:fdt = 'sh#fold_text()'
+                           \ | let &l:fdt = 'fold#text()'
                            \ | setl cocu=nc
                            \ | setl cole=3
 augroup END

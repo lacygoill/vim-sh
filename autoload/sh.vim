@@ -30,20 +30,6 @@ fu! sh#clean_zsh_history() abort "{{{1
     sil! exe 'g/\v:\s+\d+:\d+;%(sudo\s+)?%('.join(cmds, '|').')%(\s|$)/d_'
 endfu
 
-fu! sh#fold_text() abort "{{{1
-    let indent = repeat(' ', (v:foldlevel-1)*3)
-    let title  = substitute(getline(v:foldstart), '\v^\s*#\s*|\s*#?\{\{\{\d?', '', 'g')
-    let title  = substitute(title, '\v^.*\zs\(\)\s*%(\{|\()', '', '')
-
-    if get(b:, 'my_title_full', 0)
-        let foldsize  = (v:foldend - v:foldstart)
-        let linecount = '['.foldsize.']'.repeat(' ', 4 - strchars(foldsize))
-        return indent.' '.linecount.' '.title
-    else
-        return indent.' '.title
-    endif
-endfu
-
 fu! sh#shellcheck_loclist() abort "{{{1
 " FIXME:
 " consider this line:
