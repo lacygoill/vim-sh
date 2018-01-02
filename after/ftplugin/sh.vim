@@ -8,7 +8,7 @@ cnorea <expr> <buffer> cleanzshhistory  getcmdtype() ==# ':' && getcmdline() ==#
 
 " Mappings {{{1
 
-nno  <buffer><nowait><silent>  K       :<c-u>call my_lib#man_k('bash')<cr>
+nno  <buffer><nowait><silent>  K       :<c-u>call lg#man_k('bash')<cr>
 nno  <buffer><nowait><silent>  <bar>c  :<c-u>call sh#shellcheck_loclist()<cr>
 nno  <buffer><nowait><silent>  <bar>C  :<c-u>call sh#shellcheck_raw_output()<cr>
 
