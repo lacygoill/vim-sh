@@ -57,7 +57,7 @@ fu! sh#shellcheck_loclist() abort "{{{1
         return
     endif
 
-    sil! call lg#motion#repeatable#make#set_last_used(']l', 1)
+    sil! call lg#motion#repeatable#make#set_last_used(']l', {'bwd': ',', 'fwd': ';'})
 
     call setloclist(0, loclist)
     call setloclist(0, [], 'a', { 'title': 'Errors' })
