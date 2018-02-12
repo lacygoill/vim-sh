@@ -63,7 +63,7 @@ fu! sh#shellcheck_loclist() abort "{{{1
     call setloclist(0, [], 'a', { 'title': 'Errors' })
     doautocmd <nomodeline> QuickFixCmdPost lopen
 
-    if &bt !=# 'quickfix'
+    if &bt isnot# 'quickfix'
         return
     endif
 
