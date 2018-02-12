@@ -2,7 +2,7 @@
 
 com! -buffer CleanZshHistory call sh#clean_zsh_history()
 
-cnorea <expr> <buffer> cleanzshhistory  getcmdtype() ==# ':' && getcmdline() ==# 'cleanzshhistory'
+cnorea <expr> <buffer> cleanzshhistory  getcmdtype() is# ':' && getcmdline() is# 'cleanzshhistory'
 \                                       ?    'CleanZshHistory'
 \                                       :    'cleanzshhistory'
 
