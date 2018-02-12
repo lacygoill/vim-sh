@@ -44,7 +44,7 @@ fu! sh#shellcheck_loclist() abort "{{{1
 
     let loclist = []
     for error in errors
-        if match(error, '^\nin') != -1
+        if match(error, '^\nin') !=# -1
             let lnum = matchstr(error, '\nin.\{-}\zs\d\+\ze:\n')
             let text = matchstr(error, 'SC\d\+.*')
             let col  = match(matchstr(error, ':\n.*\n\zs.*'), '\^') + 1
