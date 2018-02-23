@@ -5,8 +5,8 @@ syn cluster shAnyComment contains=shComment,shQuickComment,zshComment
 " replace noisy/ugly markers, used in folds, with ❭ and ❬
 "                           ┌ get rid of it once we've concealed comment leaders
 "                         ┌─┤
-syn match shFoldMarkers  /#\?\s*{{{\d*\s*\ze\n/  conceal cchar=❭  containedin=@shAnyComment
-syn match shFoldMarkers  /#\?\s*}}}\d*\s*\ze\n/  conceal cchar=❬  containedin=@shAnyComment
+exe 'syn match shFoldMarkers  /#\?\s*{'.'{{\d*\s*\ze\n/  conceal cchar=❭  containedin=@shAnyComment'
+exe 'syn match shFoldMarkers  /#\?\s*}'.'}}\d*\s*\ze\n/  conceal cchar=❬  containedin=@shAnyComment'
 
 
 " :syn list shComment
@@ -39,40 +39,13 @@ syn match shFoldMarkers  /#\?\s*}}}\d*\s*\ze\n/  conceal cchar=❬  containedin=
 " Redefine the `shComment` group, because we want to conceal the comment leader.
 "
 " Originally:
-"         syn match shComment /#.*/ contains=@Spell,shTodo    ✘
-" syn region shComment matchgroup=Comment start=/^\s*\zs#@\@!/ end=/$/ concealends contains=@Spell,shTodo    ✘
-
-syn match shCommentCode    "^\s*#@.*"   containedin=@shAnyComment contains=shCommentCode
-syn match shCommentCodeAt  "^\s*#\zs@"  conceal
+"         syn match shComment /#.*/ contains=@Spell,shTodo
+syn region  shComment      matchgroup=Comment  start=/^\s*\zs#@\@!\s\?/  end=/$/  concealends contains=@Spell,shTodo
+syn region  shCommentCode  matchgroup=Number   start=/^\s*\zs#@\s\?/     end=/$/  concealends containedin=ALL
+syn region  shBackticks    matchgroup=Comment  start=/`/                 end=/`/  oneline concealends containedin=@shAnyComment
 
 " colors {{{1
 
-hi link shCommentCode Number
-
-" syntax {{{2
-"
-" Redefine the `awkComment` group, because we want to conceal the comment leader.
-"
-" Originally:
-"           syn match awkComment /#.*/ contains=@Spell,awkTodo
-" syn region awkComment matchgroup=Comment start=/^\s*\zs#@\@!/ end=/$/ concealends contains=@Spell,awkTodo
-"
-" replace noisy markers, used in folds, with ❭ and ❬
-" syn match awkFoldMarkers  /\s*{{{\d*\s*\ze\n/  conceal cchar=❭  containedin=awkComment
-" syn match awkFoldMarkers  /\s*}}}\d*\s*\ze\n/  conceal cchar=❬  containedin=awkComment
-"
-" define a syntax group for commented code
-" syn region awkCommentCode matchgroup=Number start=/^\s*\zs#@/ end=/$/ containedin=awkComment concealends
-"
-" by default, `awkTodo` only contains the keyword `TODO`
-" syn keyword awkTodo contained TODO FIXME XXX
-"                     │
-"                     └─ the group will be recognized only if it is mentioned
-"                        in the "contains" field of another match; i.e.:
-"
-"                               syn … contains=awkTodo
-"
-" colors {{{2
-"
-" hi link  awkComment      Comment
-" hi link  awkCommentCode  Number
+hi link  shComment      Comment
+hi link  shCommentCode  Number
+hi link  shBackticks    Backticks
