@@ -83,7 +83,7 @@ fu! sh#shellcheck_raw_output() abort "{{{1
     let view = winsaveview()
 
     new
-    setl bh=wipe nobl bt=nofile noswf nowrap
+    setl bh=wipe bt=nofile nobl noswf nowrap
     if !bufexists('shellcheck') | sil file shellcheck | endif
 
     sil 0put =output
@@ -91,8 +91,8 @@ fu! sh#shellcheck_raw_output() abort "{{{1
     nno  <buffer><nowait><silent>  q  :<c-u>close<cr>
 
     $-,$d_ | 1d_
-    setl noma ro
 
     wincmd p | call winrestview(view)
     call sh#shellcheck_loclist()
 endfu
+
