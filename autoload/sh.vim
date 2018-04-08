@@ -82,9 +82,9 @@ fu! sh#shellcheck_raw_output() abort "{{{1
     endif
     let view = winsaveview()
 
-    new
+    let tempfile = tempname().'/shellcheck'
+    exe 'new '.tempfile
     setl bh=wipe bt=nofile nobl noswf nowrap
-    if !bufexists('shellcheck') | sil file shellcheck | endif
 
     sil 0put =output
 
