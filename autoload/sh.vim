@@ -84,7 +84,7 @@ fu! sh#shellcheck_raw_output() abort "{{{1
 
     let tempfile = tempname().'/shellcheck'
     exe 'new '.tempfile
-    setl bh=wipe bt=nofile nobl noswf nowrap
+    setl bt=nofile nobl noswf nowrap
 
     sil 0put =output
 
