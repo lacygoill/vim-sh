@@ -44,6 +44,7 @@ syn region  shComment      matchgroup=Comment  start=/^\s*\zs#@\@!\s\?/  end=/$/
 syn region  shCommentCode  matchgroup=Number   start=/^\s*\zs#@\s\?/     end=/$/  concealends containedin=ALL
 syn region  shBackticks    matchgroup=Comment  start=/`/                 end=/`/  oneline concealends containedin=@shAnyComment
 
+" don't conceal the number sign on the shebang line
 syn match shShebang '#!/bin/bash'
 
 " colors {{{1
