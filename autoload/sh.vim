@@ -61,7 +61,7 @@ fu! sh#shellcheck_loclist() abort "{{{1
 
     call setloclist(0, loclist)
     call setloclist(0, [], 'a', { 'title': 'Errors' })
-    doautocmd <nomodeline> QuickFixCmdPost lopen
+    do <nomodeline> QuickFixCmdPost lopen
 
     call qf#set_matches('sh:shellcheck_loclist', 'Conceal', '\v^.{-}SC\d{-1,}:')
     call qf#create_matches()
