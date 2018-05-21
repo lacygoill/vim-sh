@@ -3,8 +3,6 @@
 syn cluster shAnyComment contains=shComment,shQuickComment,zshComment
 
 " replace noisy/ugly markers, used in folds, with ❭ and ❬
-"                           ┌ get rid of it once we've concealed comment leaders
-"                         ┌─┤
 exe 'syn match shFoldMarkers  /#\?\s*{'.'{{\d*\s*\ze\n/  conceal cchar=❭  containedin=@shAnyComment'
 exe 'syn match shFoldMarkers  /#\?\s*}'.'}}\d*\s*\ze\n/  conceal cchar=❬  containedin=@shAnyComment'
 
