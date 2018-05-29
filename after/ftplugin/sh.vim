@@ -21,6 +21,20 @@ noremap  <buffer><expr><nowait><silent>  ]m  lg#motion#regex#rhs('sh_fu',1)
 noremap  <buffer><expr><nowait><silent>  [M  lg#motion#regex#rhs('sh_endfu',0)
 noremap  <buffer><expr><nowait><silent>  ]M  lg#motion#regex#rhs('sh_endfu',1)
 
+if has_key(get(g:, 'plugs', {}), 'vim-lg-lib')
+    call lg#motion#repeatable#make#all({
+    \        'mode':   '',
+    \        'buffer': 1,
+    \        'axis':   {'bwd': ',', 'fwd': ';'},
+    \        'from':   expand('<sfile>:p').':'.expand('<slnum>'),
+    \        'motions': [
+    \                     {'bwd': '[m',  'fwd': ']m', },
+    \                     {'bwd': '[M',  'fwd': ']M', },
+    \                     {'bwd': '[[',  'fwd': ']]', },
+    \                   ]
+    \ })
+endif
+
 " Options {{{1
 
 augroup my_sh
