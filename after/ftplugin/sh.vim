@@ -12,6 +12,15 @@ nno  <buffer><nowait><silent>  K       :<c-u>call lg#man_k('bash')<cr>
 nno  <buffer><nowait><silent>  <bar>c  :<c-u>call sh#shellcheck_loclist()<cr>
 nno  <buffer><nowait><silent>  <bar>C  :<c-u>call sh#shellcheck_raw_output()<cr>
 
+noremap  <buffer><expr><nowait><silent>  [[  lg#motion#regex#rhs('{{',0)
+noremap  <buffer><expr><nowait><silent>  ]]  lg#motion#regex#rhs('{{',1)
+
+noremap  <buffer><expr><nowait><silent>  [m  lg#motion#regex#rhs('sh_fu',0)
+noremap  <buffer><expr><nowait><silent>  ]m  lg#motion#regex#rhs('sh_fu',1)
+
+noremap  <buffer><expr><nowait><silent>  [M  lg#motion#regex#rhs('sh_endfu',0)
+noremap  <buffer><expr><nowait><silent>  ]M  lg#motion#regex#rhs('sh_endfu',1)
+
 " Options {{{1
 
 augroup my_sh
@@ -38,6 +47,12 @@ let b:undo_ftplugin =         get(b:, 'undo_ftplugin', '')
                     \    | exe 'nunmap <buffer> K'
                     \    | exe 'nunmap <buffer> <bar>c'
                     \    | exe 'nunmap <buffer> <bar>C'
+                    \    | exe 'nunmap <buffer> [['
+                    \    | exe 'nunmap <buffer> ]]'
+                    \    | exe 'nunmap <buffer> [m'
+                    \    | exe 'nunmap <buffer> ]m'
+                    \    | exe 'nunmap <buffer> [M'
+                    \    | exe 'nunmap <buffer> ]M'
                     \    | exe 'cuna   <buffer> cleanzshhistory'
                     \    | delc CleanZshHistory
                     \  "
