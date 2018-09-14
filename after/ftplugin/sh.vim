@@ -6,6 +6,8 @@ cnorea <expr> <buffer> cleanzshhistory  getcmdtype() is# ':' && getcmdline() is#
 \                                       ?    'CleanZshHistory'
 \                                       :    'cleanzshhistory'
 
+com! -bar -buffer -nargs=1 ShellCheckWiki call sh#shellcheck_wiki(<q-args>)
+
 " Mappings {{{1
 
 nno  <buffer><nowait><silent>  K       :<c-u>call lg#man_k('bash')<cr>
@@ -69,4 +71,5 @@ let b:undo_ftplugin =         get(b:, 'undo_ftplugin', '')
                     \    | exe 'nunmap <buffer> ]M'
                     \    | exe 'cuna   <buffer> cleanzshhistory'
                     \    | delc CleanZshHistory
+                    \    | delc ShellCheckWiki
                     \  "

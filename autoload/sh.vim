@@ -70,6 +70,12 @@ fu! sh#shellcheck_loclist() abort "{{{1
     wincmd p
 endfu
 
+fu! sh#shellcheck_wiki(number) abort "{{{1
+    let url = 'https://github.com/koalaman/shellcheck/wiki/SC'.a:number
+    let cmd = 'xdg-open '.string(url)
+    call system(cmd)
+endfu
+
 fu! sh#shellcheck_raw_output() abort "{{{1
     let output = system('shellcheck '.shellescape(expand('%:p')))
     if empty(output)
