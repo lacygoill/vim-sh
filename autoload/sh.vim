@@ -1,35 +1,3 @@
-fu! sh#clean_zsh_history() abort "{{{1
-    " TODO: handle the case where we delete the first line of a multi-line command;
-    " we need to remove the others too.
-    "
-    " I think this pattern matches a line which doesn't end with `\` (continuation
-    " line), and whose next line doesn't begin with a colon:
-    "         [^\\]\_$\n[^:]
-    "
-    " This is the kind of line which could remain after deleting the first line of
-    " a multi-line command.
-
-    sil! g/\v:\s+\d+:\d+;\w\s/d_
-    let cmds = [
-    \            'api',
-    \            'app',
-    \            'aps',
-    \            'cd',
-    \            'cp',
-    \            'echo',
-    \            'ls',
-    \            'man',
-    \            'mkdir',
-    \            'rm',
-    \            'rmdir',
-    \            'sleep',
-    \            'touch',
-    \            'web',
-    \          ]
-
-    sil! exe 'g/\v:\s+\d+:\d+;%(sudo\s+)?%('.join(cmds, '|').')%(\s|$)/d_'
-endfu
-
 fu! sh#shellcheck_loclist() abort "{{{1
 " FIXME:
 " consider this line:
