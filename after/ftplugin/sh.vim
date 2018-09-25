@@ -19,16 +19,15 @@ noremap  <buffer><expr><nowait><silent>  ]M  lg#motion#regex#rhs('sh_endfu',1)
 
 if has_key(get(g:, 'plugs', {}), 'vim-lg-lib')
     call lg#motion#repeatable#make#all({
-    \        'mode':   '',
-    \        'buffer': 1,
-    \        'axis':   {'bwd': ',', 'fwd': ';'},
-    \        'from':   expand('<sfile>:p').':'.expand('<slnum>'),
-    \        'motions': [
-    \                     {'bwd': '[m',  'fwd': ']m', },
-    \                     {'bwd': '[M',  'fwd': ']M', },
-    \                     {'bwd': '[[',  'fwd': ']]', },
-    \                   ]
-    \ })
+        \ 'mode': '',
+        \ 'buffer': 1,
+        \ 'axis': {'bwd': ',', 'fwd': ';'},
+        \ 'from': expand('<sfile>:p').':'.expand('<slnum>'),
+        \ 'motions': [
+        \     {'bwd': '[m',  'fwd': ']m'},
+        \     {'bwd': '[M',  'fwd': ']M'},
+        \     {'bwd': '[[',  'fwd': ']]'},
+        \ ]})
 endif
 
 " Options {{{1
