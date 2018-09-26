@@ -45,7 +45,7 @@ fu! sh#shellcheck_wiki(number) abort "{{{1
 endfu
 
 fu! sh#shellcheck_raw_output() abort "{{{1
-    let output = system('shellcheck '.shellescape(expand('%:p')))
+    let output = systemlist('shellcheck '.shellescape(expand('%:p')))
     if empty(output)
         echo 'No errors'
         return
@@ -56,11 +56,9 @@ fu! sh#shellcheck_raw_output() abort "{{{1
     exe 'new '.tempfile
     setl bt=nofile nobl noswf nowrap
 
-    sil 0put =output
+    call setline(1, output)
 
     nno  <buffer><nowait><silent>  q  :<c-u>close<cr>
-
-    $-,$d_ | 1d_
 
     wincmd p | call winrestview(view)
     call sh#shellcheck_loclist()
