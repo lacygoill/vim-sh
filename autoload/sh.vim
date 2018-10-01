@@ -7,7 +7,7 @@ fu! sh#shellcheck_loclist() abort "{{{1
 " `shellcheck` find 6 errors.
 " Our `shellcheck_loclist()` function can only display one or two errors.
 
-    let output = system('shellcheck '.shellescape(expand('%:p')))
+    let output = system('shellcheck '.expand('%:p:S'))
     let errors = split(output, "\n\n")
 
     let loclist = []
@@ -45,7 +45,7 @@ fu! sh#shellcheck_wiki(number) abort "{{{1
 endfu
 
 fu! sh#shellcheck_raw_output() abort "{{{1
-    let output = systemlist('shellcheck '.shellescape(expand('%:p')))
+    let output = systemlist('shellcheck '.expand('%:p:S'))
     if empty(output)
         echo 'No errors'
         return
