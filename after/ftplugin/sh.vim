@@ -17,7 +17,7 @@ noremap  <buffer><expr><nowait><silent>  ]m  lg#motion#regex#rhs('sh_fu',1)
 noremap  <buffer><expr><nowait><silent>  [M  lg#motion#regex#rhs('sh_endfu',0)
 noremap  <buffer><expr><nowait><silent>  ]M  lg#motion#regex#rhs('sh_endfu',1)
 
-if has_key(get(g:, 'plugs', {}), 'vim-lg-lib')
+if match(&rtp, 'vim-lg-lib') >= 0
     call lg#motion#repeatable#make#all({
         \ 'mode': '',
         \ 'buffer': 1,
