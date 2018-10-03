@@ -35,7 +35,7 @@ endif
 augroup my_sh
     au! *            <buffer>
     au  BufWinEnter  <buffer>  setl fdm=marker
-                           \ | setl fdt=fold#text()
+                           \ | setl fdt=fold#fdt#get()
                            \ | setl cocu=nc
                            \ | setl cole=3
 augroup END
