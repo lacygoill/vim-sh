@@ -50,18 +50,20 @@ setl tw=80
 
 let b:undo_ftplugin = get(b:, 'undo_ftplugin', '')
     \ . (empty(get(b:, 'undo_ftplugin', '')) ? '' : '|')
-    \ . 'setl cocu< cole< fdm< fdt< kp< sts< sw< ts< tw<'
-    \ . '| exe "au! my_sh * <buffer>"'
+    \ . "
+    \ setl cocu< cole< fdm< fdt< kp< sts< sw< ts< tw<
+    \|exe 'au! my_sh * <buffer>'
     \
-    \ . '| nunmap <buffer> K'
-    \ . '| nunmap <buffer> <bar>c'
-    \ . '| nunmap <buffer> <bar>C'
-    \ . '| nunmap <buffer> [['
-    \ . '| nunmap <buffer> ]]'
-    \ . '| nunmap <buffer> [m'
-    \ . '| nunmap <buffer> ]m'
-    \ . '| nunmap <buffer> [M'
-    \ . '| nunmap <buffer> ]M'
+    \|nunmap <buffer> K
+    \|nunmap <buffer> <bar>c
+    \|nunmap <buffer> <bar>C
+    \|nunmap <buffer> [[
+    \|nunmap <buffer> ]]
+    \|nunmap <buffer> [m
+    \|nunmap <buffer> ]m
+    \|nunmap <buffer> [M
+    \|nunmap <buffer> ]M
     \
-    \ . '| delc ShellCheckWiki'
+    \|delc ShellCheckWiki
+    \"
 
