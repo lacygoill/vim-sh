@@ -48,19 +48,20 @@ setl tw=80
 
 " Teardown {{{1
 
-let b:undo_ftplugin =         get(b:, 'undo_ftplugin', '')
-                    \ .(empty(get(b:, 'undo_ftplugin', '')) ? '' : '|')
-                    \ ."
-                    \      setl cocu< cole< fdm< fdt< kp< sts< sw< ts< tw<
-                    \    | exe 'au!  my_sh * <buffer>'
-                    \    | exe 'nunmap <buffer> K'
-                    \    | exe 'nunmap <buffer> <bar>c'
-                    \    | exe 'nunmap <buffer> <bar>C'
-                    \    | exe 'nunmap <buffer> [['
-                    \    | exe 'nunmap <buffer> ]]'
-                    \    | exe 'nunmap <buffer> [m'
-                    \    | exe 'nunmap <buffer> ]m'
-                    \    | exe 'nunmap <buffer> [M'
-                    \    | exe 'nunmap <buffer> ]M'
-                    \    | delc ShellCheckWiki
-                    \  "
+let b:undo_ftplugin = get(b:, 'undo_ftplugin', '')
+    \ . (empty(get(b:, 'undo_ftplugin', '')) ? '' : '|')
+    \ . 'setl cocu< cole< fdm< fdt< kp< sts< sw< ts< tw<'
+    \ . '| exe "au! my_sh * <buffer>"'
+    \
+    \ . '| nunmap <buffer> K'
+    \ . '| nunmap <buffer> <bar>c'
+    \ . '| nunmap <buffer> <bar>C'
+    \ . '| nunmap <buffer> [['
+    \ . '| nunmap <buffer> ]]'
+    \ . '| nunmap <buffer> [m'
+    \ . '| nunmap <buffer> ]m'
+    \ . '| nunmap <buffer> [M'
+    \ . '| nunmap <buffer> ]M'
+    \
+    \ . '| delc ShellCheckWiki'
+
