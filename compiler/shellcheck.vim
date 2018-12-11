@@ -6,7 +6,7 @@ if exists(':CompilerSet') !=# 2
 endif
 
 " https://vimways.org/2018/runtime-hackery/
-CompilerSet efm=%f:%l:%c:\ %m\ [SC%n]
+CompilerSet efm=%f:%l:%c:\ %t%*[^:]:\ %m\ [SC%n]
 CompilerSet mp=shellcheck\ -s\ bash\ -f\ gcc\ --\ %:S
 "                          ├──────┘  ├─────┘{{{
 "                          │         └ GCC compatible output.
