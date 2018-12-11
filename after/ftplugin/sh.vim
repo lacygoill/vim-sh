@@ -5,8 +5,9 @@ com! -bar -buffer -nargs=1 ShellCheckWiki call sh#shellcheck_wiki(<q-args>)
 " Mappings {{{1
 
 nno  <buffer><nowait><silent>  K       :<c-u>call lg#man_k('bash')<cr>
-nno  <buffer><nowait><silent>  <bar>c  :<c-u>call sh#shellcheck_loclist()<cr>
-nno  <buffer><nowait><silent>  <bar>C  :<c-u>call sh#shellcheck_raw_output()<cr>
+" If you need a buggy shell script to test the linter:
+"     $ echo 'echo `echo $i`' >/tmp/sh.sh
+nno  <buffer><nowait><silent>  <bar>c  :<c-u>compiler shellcheck<bar>sil lmake!<bar>redraw!<cr>
 
 noremap  <buffer><expr><nowait><silent>  [[  lg#motion#regex#rhs('{{',0)
 noremap  <buffer><expr><nowait><silent>  ]]  lg#motion#regex#rhs('{{',1)
@@ -32,14 +33,6 @@ endif
 
 " Options {{{1
 
-augroup my_sh
-    au! *            <buffer>
-    au  BufWinEnter  <buffer>  setl fdm=marker
-                           \ | setl fdt=fold#fdt#get()
-                           \ | setl cocu=nc
-                           \ | setl cole=3
-augroup END
-
 setl kp=:Man
 setl sts=2
 setl sw=2
@@ -51,12 +44,10 @@ setl tw=80
 let b:undo_ftplugin = get(b:, 'undo_ftplugin', '')
     \ . (empty(get(b:, 'undo_ftplugin', '')) ? '' : '|')
     \ . "
-    \ setl cocu< cole< fdm< fdt< kp< sts< sw< ts< tw<
-    \|exe 'au! my_sh * <buffer>'
+    \ setl kp< sts< sw< ts< tw<
     \
     \|nunmap <buffer> K
     \|nunmap <buffer> <bar>c
-    \|nunmap <buffer> <bar>C
     \|nunmap <buffer> [[
     \|nunmap <buffer> ]]
     \|nunmap <buffer> [m
