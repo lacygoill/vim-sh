@@ -44,17 +44,17 @@ setl tw=80
 let b:undo_ftplugin = get(b:, 'undo_ftplugin', '')
     \ . (empty(get(b:, 'undo_ftplugin', '')) ? '' : '|')
     \ . "
-    \ setl kp< sts< sw< ts< tw<
+    \   setl kp< sts< sw< ts< tw<
     \
-    \|nunmap <buffer> K
-    \|nunmap <buffer> <bar>c
-    \|nunmap <buffer> [[
-    \|nunmap <buffer> ]]
-    \|nunmap <buffer> [m
-    \|nunmap <buffer> ]m
-    \|nunmap <buffer> [M
-    \|nunmap <buffer> ]M
+    \ | exe 'nunmap <buffer> K'
+    \ | exe 'nunmap <buffer> <bar>c'
+    \ | exe 'nunmap <buffer> [['
+    \ | exe 'nunmap <buffer> ]]'
+    \ | exe 'nunmap <buffer> [m'
+    \ | exe 'nunmap <buffer> ]m'
+    \ | exe 'nunmap <buffer> [M'
+    \ | exe 'nunmap <buffer> ]M'
     \
-    \|delc ShellCheckWiki
-    \"
+    \ | delc ShellCheckWiki
+    \ "
 
