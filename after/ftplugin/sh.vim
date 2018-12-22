@@ -44,7 +44,8 @@ setl tw=80
 let b:undo_ftplugin = get(b:, 'undo_ftplugin', '')
     \ . (empty(get(b:, 'undo_ftplugin', '')) ? '' : '|')
     \ . "
-    \   setl kp< sts< sw< ts< tw<
+    \   setl sts< sw< ts< tw<
+    \ | set kp<
     \
     \ | exe 'nunmap <buffer> K'
     \ | exe 'nunmap <buffer> <bar>c'
