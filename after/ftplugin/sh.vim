@@ -5,9 +5,6 @@ com! -bar -buffer -nargs=1 ShellCheckWiki call sh#shellcheck_wiki(<q-args>)
 " Mappings {{{1
 
 nno  <buffer><nowait><silent>  K       :<c-u>call lg#man_k('bash')<cr>
-" If you need a buggy shell script to test the linter:
-"     $ echo 'echo `echo $i`' >/tmp/sh.sh
-nno  <buffer><nowait><silent>  <bar>c  :<c-u>compiler shellcheck<bar>sil lmake!<bar>redraw!<cr>
 
 noremap  <buffer><expr><nowait><silent>  [[  lg#motion#regex#rhs('{{',0)
 noremap  <buffer><expr><nowait><silent>  ]]  lg#motion#regex#rhs('{{',1)
@@ -38,12 +35,16 @@ setl sw=2
 setl ts=2
 setl tw=80
 
+" If you need a buggy shell script to test the linter:
+"     $ echo 'echo `echo $i`' >/tmp/sh.sh
+compiler shellcheck
+
 " Teardown {{{1
 
 let b:undo_ftplugin = get(b:, 'undo_ftplugin', '')
     \ . (empty(get(b:, 'undo_ftplugin', '')) ? '' : '|')
     \ . "
-    \   setl sts< sw< ts< tw<
+    \   setl efm< mp< sts< sw< ts< tw<
     \ | set kp<
     \
     \ | exe 'nunmap <buffer> K'
