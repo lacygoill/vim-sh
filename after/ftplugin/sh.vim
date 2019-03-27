@@ -48,7 +48,6 @@ let b:undo_ftplugin = get(b:, 'undo_ftplugin', '')
     \ | set kp<
     \
     \ | exe 'nunmap <buffer> K'
-    \ | exe 'nunmap <buffer> <bar>c'
     \ | exe 'nunmap <buffer> [['
     \ | exe 'nunmap <buffer> ]]'
     \ | exe 'nunmap <buffer> [m'
