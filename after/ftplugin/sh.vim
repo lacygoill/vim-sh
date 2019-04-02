@@ -1,6 +1,15 @@
 " Commands {{{1
 
-com! -bar -buffer -nargs=1 ShellCheckWiki call sh#shellcheck_wiki(<q-args>)
+" Purpose: Get more information about an error found by shellcheck.
+" There's no need to run `shellcheck` in the shell to get the error number.{{{
+"
+" When you run the linter in Vim (press `|c` at the moment), the error number is
+" given in the qf window:
+"
+"     /tmp/sh.sh  |3 col 8 n 2016  | Expressions don't expand in single quotes, use double quotes for that.
+"                            ^^^^
+"}}}
+com! -bar -buffer -complete=custom,sh#complete_shellcheck -nargs=1 ShellCheckWiki call sh#shellcheck_wiki(<q-args>)
 
 " Mappings {{{1
 
