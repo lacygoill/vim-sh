@@ -50,10 +50,9 @@ compiler shellcheck
 
 " Teardown {{{1
 
-let b:undo_ftplugin = get(b:, 'undo_ftplugin', '')
-    \ . (empty(get(b:, 'undo_ftplugin', '')) ? '' : '|')
+let b:undo_ftplugin = get(b:, 'undo_ftplugin', 'exe')
     \ . "
-    \   setl efm< mp< sts< sw< ts< tw<
+    \ | setl efm< mp< sts< sw< ts< tw<
     \ | set kp<
     \
     \ | exe 'nunmap <buffer> K'
