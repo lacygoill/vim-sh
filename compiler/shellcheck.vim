@@ -7,7 +7,7 @@ endif
 
 " https://vimways.org/2018/runtime-hackery/
 CompilerSet efm=%f:%l:%c:\ %t%*[^:]:\ %m\ [SC%n]
-CompilerSet mp=shellcheck\ -s\ bash\ -f\ gcc\ --\ %:p:S
+CompilerSet mp=shellcheck\ -s\ bash\ -f\ gcc\ %:p:S
 "                          ├──────┘  ├─────┘{{{
 "                          │         └ GCC compatible output.
 "                          │           Useful for editors that support compiling and showing syntax errors.
