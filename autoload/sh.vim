@@ -5,6 +5,6 @@ fu! sh#shellcheck_wiki(number) abort "{{{1
 endfu
 
 fu! sh#complete_shellcheck(_arglead, _cmdline, _pos) abort
-    return join(map(getloclist(0), {i,v -> v.nr}), "\n")
+    return join(map(getloclist(0), {_,v -> v.nr}), "\n")
 endfu
 
