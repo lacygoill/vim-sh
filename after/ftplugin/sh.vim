@@ -9,7 +9,7 @@
 "     /tmp/sh.sh  |3 col 8 n 2016  | Expressions don't expand in single quotes, use double quotes for that.
 "                            ^^^^
 "}}}
-com! -bar -buffer -complete=custom,sh#complete_shellcheck -nargs=1 ShellCheckWiki call sh#shellcheck_wiki(<q-args>)
+com -bar -buffer -complete=custom,sh#complete_shellcheck -nargs=1 ShellCheckWiki call sh#shellcheck_wiki(<q-args>)
 
 " Mappings {{{1
 
