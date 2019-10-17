@@ -13,16 +13,16 @@ com -bar -buffer -complete=custom,sh#complete_shellcheck -nargs=1 ShellCheckWiki
 
 " Mappings {{{1
 
-nno  <buffer><nowait><silent>  K       :<c-u>call lg#man_k('bash')<cr>
+nno <buffer><nowait><silent> K :<c-u>call lg#man_k('bash')<cr>
 
-noremap  <buffer><expr><nowait><silent>  [[  lg#motion#regex#rhs('{{',0)
-noremap  <buffer><expr><nowait><silent>  ]]  lg#motion#regex#rhs('{{',1)
+noremap <buffer><expr><nowait><silent> [[ lg#motion#regex#rhs('{{',0)
+noremap <buffer><expr><nowait><silent> ]] lg#motion#regex#rhs('{{',1)
 
-noremap  <buffer><expr><nowait><silent>  [m  lg#motion#regex#rhs('sh_fu',0)
-noremap  <buffer><expr><nowait><silent>  ]m  lg#motion#regex#rhs('sh_fu',1)
+noremap <buffer><expr><nowait><silent> [m lg#motion#regex#rhs('sh_fu',0)
+noremap <buffer><expr><nowait><silent> ]m lg#motion#regex#rhs('sh_fu',1)
 
-noremap  <buffer><expr><nowait><silent>  [M  lg#motion#regex#rhs('sh_endfu',0)
-noremap  <buffer><expr><nowait><silent>  ]M  lg#motion#regex#rhs('sh_endfu',1)
+noremap <buffer><expr><nowait><silent> [M lg#motion#regex#rhs('sh_endfu',0)
+noremap <buffer><expr><nowait><silent> ]M lg#motion#regex#rhs('sh_endfu',1)
 
 if stridx(&rtp, 'vim-lg-lib') >= 0
     call lg#motion#repeatable#make#all({
@@ -51,18 +51,18 @@ compiler shellcheck
 " Teardown {{{1
 
 let b:undo_ftplugin = get(b:, 'undo_ftplugin', 'exe')
-    \ . "
+    \ ..'
     \ | setl efm< mp< sts< sw< ts< tw<
     \ | set kp<
     \
-    \ | exe 'nunmap <buffer> K'
-    \ | exe 'nunmap <buffer> [['
-    \ | exe 'nunmap <buffer> ]]'
-    \ | exe 'nunmap <buffer> [m'
-    \ | exe 'nunmap <buffer> ]m'
-    \ | exe 'nunmap <buffer> [M'
-    \ | exe 'nunmap <buffer> ]M'
+    \ | exe "nunmap <buffer> K"
+    \ | exe "nunmap <buffer> [["
+    \ | exe "nunmap <buffer> ]]"
+    \ | exe "nunmap <buffer> [m"
+    \ | exe "nunmap <buffer> ]m"
+    \ | exe "nunmap <buffer> [M"
+    \ | exe "nunmap <buffer> ]M"
     \
     \ | delc ShellCheckWiki
-    \ "
+    \ '
 

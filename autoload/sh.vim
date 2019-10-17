@@ -4,7 +4,7 @@ fu sh#shellcheck_wiki(number) abort "{{{1
     sil call system(cmd)
 endfu
 
-fu sh#complete_shellcheck(_arglead, _cmdline, _pos) abort
+fu sh#complete_shellcheck(_a, _l, _p) abort
     return join(map(getloclist(0), {_,v -> v.nr}), "\n")
 endfu
 
