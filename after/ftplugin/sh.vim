@@ -9,7 +9,7 @@
 "     /tmp/sh.sh  |3 col 8 n 2016  | Expressions don't expand in single quotes, use double quotes for that.
 "                            ^^^^
 "}}}
-com -bar -buffer -complete=custom,sh#complete_shellcheck -nargs=1 ShellCheckWiki call sh#shellcheck_wiki(<q-args>)
+com -bar -buffer -complete=custom,sh#shellcheck_complete -nargs=1 ShellCheckWiki call sh#shellcheck_wiki(<q-args>)
 
 " Mappings {{{1
 
@@ -51,18 +51,5 @@ compiler shellcheck
 " Teardown {{{1
 
 let b:undo_ftplugin = get(b:, 'undo_ftplugin', 'exe')
-    \ ..'
-    \ | setl efm< mp< sts< sw< ts< tw<
-    \ | set kp<
-    \
-    \ | exe "nunmap <buffer> K"
-    \ | exe "nunmap <buffer> [["
-    \ | exe "nunmap <buffer> ]]"
-    \ | exe "nunmap <buffer> [m"
-    \ | exe "nunmap <buffer> ]m"
-    \ | exe "nunmap <buffer> [M"
-    \ | exe "nunmap <buffer> ]M"
-    \
-    \ | delc ShellCheckWiki
-    \ '
+    \ ..'| call sh#undo_ftplugin()'
 
