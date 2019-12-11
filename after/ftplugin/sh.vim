@@ -15,9 +15,6 @@ com -bar -buffer -complete=custom,sh#shellcheck_complete -nargs=1 ShellCheckWiki
 
 nno <buffer><nowait><silent> K :<c-u>call lg#man_k('bash')<cr>
 
-noremap <buffer><expr><nowait><silent> [[ lg#motion#regex#rhs('{{',0)
-noremap <buffer><expr><nowait><silent> ]] lg#motion#regex#rhs('{{',1)
-
 noremap <buffer><expr><nowait><silent> [m lg#motion#regex#rhs('sh_fu',0)
 noremap <buffer><expr><nowait><silent> ]m lg#motion#regex#rhs('sh_fu',1)
 
@@ -32,7 +29,6 @@ if stridx(&rtp, 'vim-lg-lib') >= 0
         \ 'motions': [
         \     {'bwd': '[m',  'fwd': ']m'},
         \     {'bwd': '[M',  'fwd': ']M'},
-        \     {'bwd': '[[',  'fwd': ']]'},
         \ ]})
 endif
 
