@@ -13,8 +13,6 @@ fu sh#undo_ftplugin() abort "{{{1
     set kp<
 
     nunmap <buffer> K
-    nunmap <buffer> [[
-    nunmap <buffer> ]]
     nunmap <buffer> [m
     nunmap <buffer> ]m
     nunmap <buffer> [M
