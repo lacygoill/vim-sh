@@ -13,8 +13,6 @@ com -bar -buffer -complete=custom,sh#shellcheck_complete -nargs=1 ShellCheckWiki
 
 " Mappings {{{1
 
-nno <buffer><nowait><silent> K :<c-u>call lg#man_k('bash')<cr>
-
 noremap <buffer><expr><nowait><silent> [m lg#motion#regex#rhs('sh_fu',0)
 noremap <buffer><expr><nowait><silent> ]m lg#motion#regex#rhs('sh_fu',1)
 
@@ -34,7 +32,6 @@ endif
 
 " Options {{{1
 
-setl kp=:Man
 setl sts=2
 setl sw=2
 setl ts=2

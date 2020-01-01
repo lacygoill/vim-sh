@@ -9,10 +9,9 @@ fu sh#shellcheck_complete(_a, _l, _p) abort "{{{1
 endfu
 
 fu sh#undo_ftplugin() abort "{{{1
-    setl efm< mp< sts< sw< ts< tw<
-    set kp<
+    setl efm< sts< sw< ts< tw<
+    set mp<
 
-    nunmap <buffer> K
     nunmap <buffer> [m
     nunmap <buffer> ]m
     nunmap <buffer> [M
