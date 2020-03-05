@@ -13,11 +13,11 @@ com -bar -buffer -complete=custom,sh#shellcheck_complete -nargs=1 ShellCheckWiki
 
 " Mappings {{{1
 
-noremap <buffer><expr><nowait><silent> [m lg#motion#regex#rhs('sh_fu',0)
-noremap <buffer><expr><nowait><silent> ]m lg#motion#regex#rhs('sh_fu',1)
+noremap <buffer><expr><nowait><silent> [m lg#motion#rhs('sh_fu',0)
+noremap <buffer><expr><nowait><silent> ]m lg#motion#rhs('sh_fu',1)
 
-noremap <buffer><expr><nowait><silent> [M lg#motion#regex#rhs('sh_endfu',0)
-noremap <buffer><expr><nowait><silent> ]M lg#motion#regex#rhs('sh_endfu',1)
+noremap <buffer><expr><nowait><silent> [M lg#motion#rhs('sh_endfu',0)
+noremap <buffer><expr><nowait><silent> ]M lg#motion#rhs('sh_endfu',1)
 
 sil! call repmap#make#all({
     \ 'mode': '',
