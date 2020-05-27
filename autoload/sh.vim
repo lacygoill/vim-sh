@@ -1,4 +1,9 @@
-fu sh#break_long_cmd(_) abort "{{{1
+fu sh#break_long_cmd(...) abort "{{{1
+    if !a:0
+        let &opfunc = 'sh#break_long_cmd'
+        return 'g@l'
+    endif
+
     if !executable('zsh')
         echohl Error
         echo 'requires zsh, but zsh is not installed'

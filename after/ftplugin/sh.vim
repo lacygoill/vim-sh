@@ -13,7 +13,7 @@ com -bar -buffer -complete=custom,sh#shellcheck_complete -nargs=1 ShellCheckWiki
 
 " Mappings {{{1
 
-nno <buffer><nowait><silent> =rb :<c-u>set opfunc=sh#break_long_cmd<cr>g@l
+nno <buffer><expr><nowait> =rb sh#break_long_cmd()
 
 noremap <buffer><expr><nowait><silent> [m brackets#move#regex('sh_fu',0)
 noremap <buffer><expr><nowait><silent> ]m brackets#move#regex('sh_fu',1)
