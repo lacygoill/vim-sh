@@ -7,7 +7,7 @@
 " given in the qf window:
 "
 "     /tmp/sh.sh  |3 col 8 n 2016  | Expressions don't expand in single quotes, use double quotes for that.
-"                            ^^^^
+"                            ^--^
 "}}}
 com -bar -buffer -complete=custom,sh#shellcheck_complete -nargs=1 ShellCheckWiki call sh#shellcheck_wiki(<q-args>)
 

@@ -25,10 +25,10 @@ fu sh#break_long_cmd(...) abort "{{{1
     call map(new, {i,v -> i < len(new)-1 ? v..' \' : v})
 
     " replace old command with new one
-    let reg_save = [getreg('"'), getregtype('"')]
+    let reg_save = getreginfo('"')
     call setreg('"', new, 'l')
     exe 'norm! '..lnum..'GVp'
-    call setreg('"', reg_save[0], reg_save[1])
+    call setreg('"', reg_save)
 
     " join lines which don't start with an option with the previous one (except for the very first line)
     let range = (lnum+1)..','..(lnum + len(new)-1)
