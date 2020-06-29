@@ -26,7 +26,9 @@ fu sh#break_long_cmd(...) abort "{{{1
 
     " replace old command with new one
     let reg_save = getreginfo('"')
-    call setreg('"', new, 'l')
+    call deepcopy(reg_save)
+        \ ->extend({'regcontents': new, 'regtype': 'l'})
+        \ ->setreg('"')
     exe 'norm! '..lnum..'GVp'
     call setreg('"', reg_save)
 
