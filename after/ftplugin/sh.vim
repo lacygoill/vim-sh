@@ -24,10 +24,10 @@ noremap <buffer><expr><nowait><silent> ]M brackets#move#regex('sh_endfu',1)
 sil! call repmap#make#repeatable({
     \ 'mode': '',
     \ 'buffer': 1,
-    \ 'from': expand('<sfile>:p').':'.expand('<slnum>'),
+    \ 'from': expand('<sfile>:p') .. ':' .. expand('<slnum>'),
     \ 'motions': [
-    \     {'bwd': '[m',  'fwd': ']m'},
-    \     {'bwd': '[M',  'fwd': ']M'},
+    \     {'bwd': '[m', 'fwd': ']m'},
+    \     {'bwd': '[M', 'fwd': ']M'},
     \ ]})
 
 " Options {{{1
@@ -44,5 +44,5 @@ compiler shellcheck
 " Teardown {{{1
 
 let b:undo_ftplugin = get(b:, 'undo_ftplugin', 'exe')
-    \ ..'| call sh#undo_ftplugin()'
+    \ .. '| call sh#undo_ftplugin()'
 
