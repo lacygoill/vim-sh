@@ -50,8 +50,7 @@ fu sh#shellcheck_complete(_a, _l, _p) abort "{{{1
 endfu
 
 fu sh#undo_ftplugin() abort "{{{1
-    setl efm< sts< sw< ts< tw<
-    set mp<
+    set efm< mp< sts< sw< ts< tw<
 
     nunmap <buffer> =rb
 
