@@ -15,11 +15,11 @@ com -bar -buffer -nargs=1 -complete=custom,sh#shellcheck_complete ShellCheckWiki
 
 nno <buffer><expr><nowait> =rb sh#break_long_cmd()
 
-noremap <buffer><expr><nowait><silent> [m brackets#move#regex('sh_fu',0)
-noremap <buffer><expr><nowait><silent> ]m brackets#move#regex('sh_fu',1)
+noremap <buffer><expr><nowait> [m brackets#move#regex('sh_fu', 0)
+noremap <buffer><expr><nowait> ]m brackets#move#regex('sh_fu', 1)
 
-noremap <buffer><expr><nowait><silent> [M brackets#move#regex('sh_endfu',0)
-noremap <buffer><expr><nowait><silent> ]M brackets#move#regex('sh_endfu',1)
+noremap <buffer><expr><nowait> [M brackets#move#regex('sh_endfu', 0)
+noremap <buffer><expr><nowait> ]M brackets#move#regex('sh_endfu', 1)
 
 sil! call repmap#make#repeatable({
     \ 'mode': '',
