@@ -12,11 +12,16 @@ fu sh#break_long_cmd(...) abort "{{{1
     endif
 
     " get new refactored shell command
-    if &shell =~# '\Czsh' | let shell_save = &shell | set shell=zsh | endif
+    if &shell =~# '\Czsh'
+        let shell_save = &shell
+        set shell=zsh
+    endif
     let lnum = line('.')
     let old = getline(lnum)
     sil let new = systemlist('cmd=' .. shellescape(old) .. "; printf -- '%s\n' ${${(z)cmd}[@]}")
-    if exists('shell_save') | let &shell = shell_save | endif
+    if exists('shell_save')
+        let &shell = shell_save
+    endif
 
     " add indentation for lines after the first one
     let curindent = matchstr(old, '^\s*')
