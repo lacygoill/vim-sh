@@ -25,9 +25,10 @@ fu sh#break_long_cmd(...) abort "{{{1
 
     " add indentation for lines after the first one
     let curindent = matchstr(old, '^\s*')
-    call map(new, {i, v -> i > 0 ? curindent .. '    ' .. v : curindent .. v})
-    " add line continuations for lines before the last one
-    call map(new, {i, v -> i < len(new) - 1 ? v .. ' \' : v})
+    eval new
+        \ ->map({i, v -> i > 0 ? curindent .. '    ' .. v : curindent .. v})
+        "\ add line continuations for lines before the last one
+        \ ->map({i, v -> i < len(new) - 1 ? v .. ' \' : v})
 
     " replace old command with new one
     let reg_save = getreginfo('"')
