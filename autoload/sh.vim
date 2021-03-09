@@ -39,7 +39,7 @@ fu sh#break_long_cmd(...) abort "{{{1
     call setreg('"', reg_save)
 
     " join lines which don't start with an option with the previous one (except for the very first line)
-    let range = (lnum+1) .. ',' .. (lnum + len(new) - 1)
+    let range = (lnum + 1) .. ',' .. (lnum + len(new) - 1)
     sil exe range .. 'g/^\s*[^-+ ]/-s/\\$//|j'
     "                         ^^
     "                         options usually start with a hyphen, but also – sometimes – with a plus
