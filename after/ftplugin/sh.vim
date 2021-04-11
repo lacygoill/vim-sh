@@ -9,11 +9,11 @@
 "     /tmp/sh.sh  |3 col 8 n 2016  | Expressions don't expand in single quotes, use double quotes for that.
 "                            ^--^
 "}}}
-com -bar -buffer -nargs=1 -complete=custom,sh#shellcheck_complete ShellCheckWiki call sh#shellcheck_wiki(<q-args>)
+com -bar -buffer -nargs=1 -complete=custom,sh#shellcheckComplete ShellCheckWiki call sh#shellcheckWiki(<q-args>)
 
 " Mappings {{{1
 
-nno <buffer><expr><nowait> =rb sh#break_long_cmd()
+nno <buffer><expr><nowait> =rb sh#breakLongCmd()
 
 noremap <buffer><expr><nowait> [m brackets#move#regex('sh_fu', v:false)
 noremap <buffer><expr><nowait> ]m brackets#move#regex('sh_fu', v:true)
@@ -32,9 +32,7 @@ sil! call repmap#make#repeatable({
 
 " Options {{{1
 
-setl sts=2
 setl sw=2
-setl ts=2
 setl tw=80
 " When I press `K` on a command name, Vim starts `less(1)`.  I want to read the documentation in a Vim buffer!{{{
 "
@@ -66,5 +64,5 @@ compiler shellcheck
 " Teardown {{{1
 
 let b:undo_ftplugin = get(b:, 'undo_ftplugin', 'exe')
-    \ .. '| call sh#undo_ftplugin()'
+    \ .. '| call sh#undoFtplugin()'
 
