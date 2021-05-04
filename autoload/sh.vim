@@ -27,7 +27,7 @@ def sh#breakLongCmd(type = ''): string #{{{1
     endif
 
     # add indentation for lines after the first one
-    var curindent: string = matchstr(old, '^\s*')
+    var curindent: string = old->matchstr('^\s*')
     new
         ->map((i: number, v: string): string => i > 0 ? curindent .. '    ' .. v : curindent .. v)
         # add line continuations for lines before the last one
@@ -44,9 +44,9 @@ def sh#breakLongCmd(type = ''): string #{{{1
 
     # join lines which don't start with an option with the previous one (except for the very first line)
     var range: string = ':' .. (lnum + 1) .. ',' .. (lnum + len(new) - 1)
-    sil exe range .. 'g/^\s*[^-+ ]/-s/\\$//|j'
-    #                         ^^
-    #                         options usually start with a hyphen, but also – sometimes – with a plus
+    exe 'sil ' .. range .. 'g/^\s*[^-+ ]/-s/\\$//|j'
+    #                               ^^
+    #                               options usually start with a hyphen, but also – sometimes – with a plus
 enddef
 
 def sh#shellcheckWiki(errorcode: string) #{{{1
