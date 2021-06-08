@@ -2,7 +2,7 @@ vim9script noclear
 
 def sh#breakLongCmd(type = ''): string #{{{1
     if type == ''
-        &opfunc = 'sh#breakLongCmd'
+        &operatorfunc = 'sh#breakLongCmd'
         return 'g@l'
     endif
 
@@ -17,7 +17,7 @@ def sh#breakLongCmd(type = ''): string #{{{1
     var shell_save: string
     if &shell =~ '\Czsh'
         shell_save = &shell
-        set shell=zsh
+        &shell = 'zsh'
     endif
     var lnum: number = line('.')
     var old: string = getline(lnum)
@@ -62,7 +62,7 @@ def sh#shellcheckComplete(_, _, _): string #{{{1
 enddef
 
 def sh#undoFtplugin() #{{{1
-    set efm< mp< sw< tw<
+    set errorformat< makeprg< shiftwidth< textwidth<
 
     nunmap <buffer> =rb
 

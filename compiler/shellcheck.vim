@@ -1,16 +1,13 @@
-let current_compiler = 'shellcheck'
+vim9script
 
-" Old Vim versions don't automatically define `:CompilerSet`.
-if exists(':CompilerSet') != 2
-    com -nargs=* CompilerSet setl <args>
-endif
+g:current_compiler = 'shellcheck'
 
-" https://vimways.org/2018/runtime-hackery/
-CompilerSet efm=%f:%l:%c:\ %t%*[^:]:\ %m\ [SC%n]
-CompilerSet mp=shellcheck\ -s\ bash\ -f\ gcc\ %:p:S
-"                          ├──────┘  ├─────┘{{{
-"                          │         └ GCC compatible output.
-"                          │           Useful for editors that support compiling and showing syntax errors.
-"                          │
-"                          └ Specify Bash shell dialect.
-"}}}
+# https://vimways.org/2018/runtime-hackery/
+CompilerSet errorformat=%f:%l:%c:\ %t%*[^:]:\ %m\ [SC%n]
+CompilerSet makeprg=shellcheck\ -s\ bash\ -f\ gcc\ %:p:S
+#                               ├──────┘  ├─────┘{{{
+#                               │         └ GCC compatible output.
+#                               │           Useful for editors that support compiling and showing syntax errors.
+#                               │
+#                               └ Specify Bash shell dialect.
+#}}}
