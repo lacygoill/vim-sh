@@ -21,7 +21,8 @@ def sh#breakLongCmd(type = ''): string #{{{1
     endif
     var lnum: number = line('.')
     var old: string = getline(lnum)
-    sil var new: list<string> = systemlist('cmd=' .. shellescape(old) .. "; printf -- '%s\n' ${${(z)cmd}[@]}")
+    silent var new: list<string> =
+        systemlist('cmd=' .. shellescape(old) .. "; printf -- '%s\n' ${${(z)cmd}[@]}")
     if shell_save != ''
         &shell = shell_save
     endif
@@ -39,20 +40,20 @@ def sh#breakLongCmd(type = ''): string #{{{1
         ->deepcopy()
         ->extend({regcontents: new, regtype: 'l'})
         ->setreg('"')
-    exe 'norm! ' .. lnum .. 'GVp'
+    execute 'normal! ' .. lnum .. 'GVp'
     setreg('"', reg_save)
 
     # join lines which don't start with an option with the previous one (except for the very first line)
     var range: string = ':' .. (lnum + 1) .. ',' .. (lnum + len(new) - 1)
-    exe 'sil ' .. range .. 'g/^\s*[^-+ ]/-s/\\$//|j'
-    #                               ^^
-    #                               options usually start with a hyphen, but also – sometimes – with a plus
+    execute 'silent ' .. range .. 'global/^\s*[^-+ ]/ :.-1 substitute/\\$// | join'
+    #                                           ^^
+    #                                           options usually start with a hyphen, but also – sometimes – with a plus
 enddef
 
 def sh#shellcheckWiki(errorcode: string) #{{{1
     var url: string = 'https://github.com/koalaman/shellcheck/wiki/SC' .. errorcode
     var cmd: string = 'xdg-open ' .. shellescape(url)
-    sil system(cmd)
+    silent system(cmd)
 enddef
 
 def sh#shellcheckComplete(_, _, _): string #{{{1
@@ -71,5 +72,5 @@ def sh#undoFtplugin() #{{{1
     nunmap <buffer> [M
     nunmap <buffer> ]M
 
-    delc ShellCheckWiki
+    delcommand ShellCheckWiki
 enddef

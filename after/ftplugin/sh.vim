@@ -11,19 +11,20 @@ vim9script
 #     /tmp/sh.sh  |3 col 8 n 2016  | Expressions don't expand in single quotes, use double quotes for that.
 #                            ^--^
 #}}}
-com -bar -buffer -nargs=1 -complete=custom,sh#shellcheckComplete ShellCheckWiki sh#shellcheckWiki(<q-args>)
+command -bar -buffer -nargs=1 -complete=custom,sh#shellcheckComplete
+    \ ShellCheckWiki sh#shellcheckWiki(<q-args>)
 
 # Mappings {{{1
 
-nno <buffer><expr><nowait> =rb sh#breakLongCmd()
+nnoremap <buffer><expr><nowait> =rb sh#breakLongCmd()
 
-noremap <buffer><expr><nowait> [m brackets#move#regex('sh_fu', v:false)
-noremap <buffer><expr><nowait> ]m brackets#move#regex('sh_fu', v:true)
+noremap <buffer><expr><nowait> [m brackets#move#regex('sh_function', v:false)
+noremap <buffer><expr><nowait> ]m brackets#move#regex('sh_function', v:true)
 
-noremap <buffer><expr><nowait> [M brackets#move#regex('sh_endfu', v:false)
-noremap <buffer><expr><nowait> ]M brackets#move#regex('sh_endfu', v:true)
+noremap <buffer><expr><nowait> [M brackets#move#regex('sh_endfunction', v:false)
+noremap <buffer><expr><nowait> ]M brackets#move#regex('sh_endfunction', v:true)
 
-sil! repmap#make#repeatable({
+silent! repmap#make#repeatable({
     \ 'mode': '',
     \ 'buffer': v:true,
     \ 'from': expand('<sfile>:p') .. ':' .. expand('<slnum>'),
@@ -43,7 +44,7 @@ sil! repmap#make#repeatable({
 #     " $VIMRUNTIME/ftplugin/zsh.vim
 #     setlocal keywordprg=:RunHelp
 #     command! -buffer -nargs=1 RunHelp
-#     \ silent exe '!zsh -ic "autoload -Uz run-help; run-help <args> 2>/dev/null | LESS= less"' | redraw!
+#     \ silent execute '!zsh -ic "autoload -Uz run-help; run-help <args> 2>/dev/null | LESS= less"' | redraw!
 #
 # Solution1:
 #
@@ -65,6 +66,6 @@ compiler shellcheck
 
 # Teardown {{{1
 
-b:undo_ftplugin = get(b:, 'undo_ftplugin', 'exe')
+b:undo_ftplugin = get(b:, 'undo_ftplugin', 'execute')
     .. '| call sh#undoFtplugin()'
 
