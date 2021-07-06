@@ -30,9 +30,9 @@ def sh#breakLongCmd(type = ''): string #{{{1
     # add indentation for lines after the first one
     var curindent: string = old->matchstr('^\s*')
     new
-        ->map((i: number, v: string): string => i > 0 ? curindent .. '    ' .. v : curindent .. v)
+        ->map((i: number, v: string) => i > 0 ? curindent .. '    ' .. v : curindent .. v)
         # add line continuations for lines before the last one
-        ->map((i: number, v: string): string => i < len(new) - 1 ? v .. ' \' : v)
+        ->map((i: number, v: string) => i < len(new) - 1 ? v .. ' \' : v)
 
     # replace old command with new one
     var reg_save: dict<any> = getreginfo('"')
@@ -63,7 +63,10 @@ def sh#shellcheckComplete(_, _, _): string #{{{1
 enddef
 
 def sh#undoFtplugin() #{{{1
-    set errorformat< makeprg< shiftwidth< textwidth<
+    set errorformat<
+    set makeprg<
+    set shiftwidth<
+    set textwidth<
 
     nunmap <buffer> =rb
 

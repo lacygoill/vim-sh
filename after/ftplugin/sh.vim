@@ -18,20 +18,19 @@ command -bar -buffer -nargs=1 -complete=custom,sh#shellcheckComplete
 
 nnoremap <buffer><expr><nowait> =rb sh#breakLongCmd()
 
-noremap <buffer><expr><nowait> [m brackets#move#regex('sh_function', v:false)
-noremap <buffer><expr><nowait> ]m brackets#move#regex('sh_function', v:true)
+map <buffer><nowait> ]m <Plug>(next-func-start)
+map <buffer><nowait> [m <Plug>(prev-func-start)
+noremap <buffer><expr> <Plug>(next-func-start) brackets#move#regex('sh-func-start')
+noremap <buffer><expr> <Plug>(prev-func-start) brackets#move#regex('sh-func-start', v:false)
+silent! submode#enter('sh-func-start', 'nx', 'br', ']m', '<Plug>(next-func-start)')
+silent! submode#enter('sh-func-start', 'nx', 'br', '[m', '<Plug>(prev-func-start)')
 
-noremap <buffer><expr><nowait> [M brackets#move#regex('sh_endfunction', v:false)
-noremap <buffer><expr><nowait> ]M brackets#move#regex('sh_endfunction', v:true)
-
-silent! repmap#make#repeatable({
-    \ 'mode': '',
-    \ 'buffer': v:true,
-    \ 'from': expand('<sfile>:p') .. ':' .. expand('<slnum>'),
-    \ 'motions': [
-    \     {'bwd': '[m', 'fwd': ']m'},
-    \     {'bwd': '[M', 'fwd': ']M'},
-    \ ]})
+map <buffer><nowait> ]M <Plug>(next-func-end)
+map <buffer><nowait> [M <Plug>(prev-func-end)
+noremap <buffer><expr> <Plug>(next-func-end) brackets#move#regex('sh-func-end')
+noremap <buffer><expr> <Plug>(prev-func-end) brackets#move#regex('sh-func-end', v:false)
+silent! submode#enter('sh-func-end', 'nx', 'br', ']M', '<Plug>(next-func-end)')
+silent! submode#enter('sh-func-end', 'nx', 'br', '[M', '<Plug>(prev-func-end)')
 
 # Options {{{1
 
@@ -41,7 +40,7 @@ silent! repmap#make#repeatable({
 #
 # The current behavior is due to these lines in the default zsh filetype plugin:
 #
-#     " $VIMRUNTIME/ftplugin/zsh.vim
+#     # $VIMRUNTIME/ftplugin/zsh.vim
 #     setlocal keywordprg=:RunHelp
 #     command! -buffer -nargs=1 RunHelp
 #     \ silent execute '!zsh -ic "autoload -Uz run-help; run-help <args> 2>/dev/null | LESS= less"' | redraw!
