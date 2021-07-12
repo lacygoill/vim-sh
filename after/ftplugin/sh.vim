@@ -22,15 +22,15 @@ map <buffer><nowait> ]m <Plug>(next-func-start)
 map <buffer><nowait> [m <Plug>(prev-func-start)
 noremap <buffer><expr> <Plug>(next-func-start) brackets#move#regex('sh-func-start')
 noremap <buffer><expr> <Plug>(prev-func-start) brackets#move#regex('sh-func-start', v:false)
-silent! submode#enter('sh-func-start', 'nx', 'br', ']m', '<Plug>(next-func-start)')
-silent! submode#enter('sh-func-start', 'nx', 'br', '[m', '<Plug>(prev-func-start)')
+silent! execute submode#enter('sh-func-start', 'nx', 'br', ']m', '<Plug>(next-func-start)')
+silent! execute submode#enter('sh-func-start', 'nx', 'br', '[m', '<Plug>(prev-func-start)')
 
 map <buffer><nowait> ]M <Plug>(next-func-end)
 map <buffer><nowait> [M <Plug>(prev-func-end)
 noremap <buffer><expr> <Plug>(next-func-end) brackets#move#regex('sh-func-end')
 noremap <buffer><expr> <Plug>(prev-func-end) brackets#move#regex('sh-func-end', v:false)
-silent! submode#enter('sh-func-end', 'nx', 'br', ']M', '<Plug>(next-func-end)')
-silent! submode#enter('sh-func-end', 'nx', 'br', '[M', '<Plug>(prev-func-end)')
+silent! execute submode#enter('sh-func-end', 'nx', 'br', ']M', '<Plug>(next-func-end)')
+silent! execute submode#enter('sh-func-end', 'nx', 'br', '[M', '<Plug>(prev-func-end)')
 
 # Options {{{1
 
